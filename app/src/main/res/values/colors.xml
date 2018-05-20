@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#414251</color>
+    <color name="colorPrimaryDark">#40404f</color>
+    <color name="colorAccent">@color/paleOrange</color>
+
+    <color name="grey">#5d5f69</color>
+    
+    <color name="paleOrange">#fa9968</color>
+    <color name="warmPink">#fa4a8d</color>
+    <color name="veryLightPink">#ffdbdb</color>
+    <color name="dark">#23232e</color>
+    <color name="darkTwo">#282934</color>
+    <color name="slateGrey">#535769</color>
+    <color name="lightBlueGrey">#cdd1f3</color>
+    <color name="paleGrey">#e6eaf8</color>
+    <color name="white">#ffffff</color>
+    <color name="warmPinkTwo">#fb5a85</color>
+    <color name="salmonPink">#fd717a</color>
+    <color name="white58">#3Affffff</color>
+    <color name="darkGrey">#282829</color>
+    <color name="fadedOrange">#f2994a</color>
+    <color name="maize">#f2c94c</color>
+    <color name="seafoamBlue">#7bc6cc</color>
+    <color name="lighterPurple">#8b4df8</color>
+    <color name="charcoalGrey">#434655</color>
+    <color name="almostBlack">#0d0e11</color>
+    <color name="salmon">#fe896f</color>
+    <color name="darkSeafoamGreen">#42b16e</color>
+    <color name="strawberry">#f2313e</color>
+    <color name="slateGreyTwo">#5b5771</color>
+    <color name="salmonPinkTwo">#fc697e</color>
+</resources>
