@@ -1,8 +1,8 @@
 package tech.snowfox.wallettracker.domain.network
 
 import android.content.Context
+import com.readystatesoftware.chuck.ChuckInterceptor
 import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import tech.snowfox.wallettracker.BuildConfig
@@ -14,21 +14,19 @@ private const val TIMEOUT_REQUEST = 30 * 1000L
 
 object ApiBuilder {
 
-    fun build(): ApiService {
+    fun build(context: Context): ApiService {
         return Retrofit.Builder()
                 .baseUrl(BASE_URL)
-                .client(createOkHttpClient())
+                .client(createOkHttpClient(context))
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(LiveDataCallAdapterFactory())
                 .build()
                 .create(ApiService::class.java)
     }
 
-    private fun createOkHttpClient(): OkHttpClient {
-        val httpLoggingInterceptor = HttpLoggingInterceptor()
-        httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
+    private fun createOkHttpClient(context: Context): OkHttpClient {
         val builder = OkHttpClient().newBuilder()
-        if (BuildConfig.DEBUG) builder.addInterceptor(httpLoggingInterceptor)
+        if (BuildConfig.DEBUG) builder.addInterceptor(ChuckInterceptor(context))
         builder.connectTimeout(TIMEOUT_REQUEST, TimeUnit.MILLISECONDS)
                 .readTimeout(TIMEOUT_REQUEST, TimeUnit.MILLISECONDS)
                 .build()

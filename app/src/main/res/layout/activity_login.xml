@@ -50,4 +50,12 @@
             android:textColor="@color/white" />
     </LinearLayout>
 
+    <Button
+        android:id="@+id/loginFacebook"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" />
+
 </RelativeLayout>

@@ -13,4 +13,10 @@ interface ApiService {
             @Query("email") email: String,
             @Query("password") password: String
     ): LiveData<Data<AuthResponse>>
+
+    @POST("users/social_auth")
+    fun loginSocial(
+            @Query("access_token") token: String,
+            @Query("social_type") socialType: String
+    ): LiveData<Data<AuthResponse>>
 }

@@ -1,15 +1,15 @@
 package tech.snowfox.wallettracker.domain.network.adapter
 
 import android.arch.lifecycle.LiveData
-import retrofit2.Call
-import retrofit2.CallAdapter
-import retrofit2.Callback
-import retrofit2.Response
+import retrofit2.*
 import tech.snowfox.wallettracker.data.dto.Data
 import java.lang.reflect.Type
 import java.util.concurrent.atomic.AtomicBoolean
 
-class LiveDataCallAdapter<T>(private val responseType: Type) : CallAdapter<T, LiveData<Data<T>>> {
+class LiveDataCallAdapter<T>(
+        private val retrofit: Retrofit,
+        private val responseType: Type
+) : CallAdapter<T, LiveData<Data<T>>> {
 
     override fun responseType(): Type {
         return responseType
@@ -27,11 +27,7 @@ class LiveDataCallAdapter<T>(private val responseType: Type) : CallAdapter<T, Li
                     call.enqueue(object : Callback<T> {
 
                         override fun onResponse(call: Call<T>?, response: Response<T>?) {
-                            val body = response?.body()
-                            postValue(when (body) {
-                                null -> Data.error(code = response?.code())
-                                else -> Data.success(body = body)
-                            })
+                            postValue(Data.create(retrofit, response))
                         }
 
                         override fun onFailure(call: Call<T>, throwable: Throwable) {
